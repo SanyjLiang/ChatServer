@@ -1,8 +1,13 @@
 #include "chatserver.hpp"
+#include "json.hpp"
+
+#include <functional>
+#include <string>
 
 #include <functional>
 using namespace std;
 using namespace placeholders;
+using json=nlohmann::json;
 
 // 初始化聊天服务器对象
 ChatServer::ChatServer(EventLoop *loop,
@@ -27,15 +32,23 @@ void ChatServer::start()
 }
 
 // 上报链接相关信息的回调函数
-void ChatServer::onConnection(const TcpConnectionPtr &)
+void ChatServer::onConnection(const TcpConnectionPtr &conn)
 {
-
+    //客户端断开连接
+    if(!conn->connected())
+    {
+        conn->shutdown();
+    }
 }
 
 // 上报读写事件相关信息的回调函数
-void ChatServer::onMessage(const TcpConnectionPtr &,
-                           Buffer *,
-                           Timestamp)
+void ChatServer::onMessage(const TcpConnectionPtr &conn,
+                           Buffer *buffer,
+                           Timestamp time)
 {
-    
+    string buf=buffer->retrieveAllAsString();
+    //数据的反序列化
+    json js=json::parse(buf);
+    //达到的目的：完全解耦网络模块的代码和业务模块的代码
+    //通过js["msgid"] 获取=》业务handler=>> conn js time
 }
