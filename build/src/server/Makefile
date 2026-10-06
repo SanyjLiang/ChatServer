@@ -154,6 +154,54 @@ chatserver.cpp.s:
 	cd /home/syjl/ChatServer/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.s
 .PHONY : chatserver.cpp.s
 
+chatservice.o: chatservice.cpp.o
+.PHONY : chatservice.o
+
+# target to build an object file
+chatservice.cpp.o:
+	cd /home/syjl/ChatServer/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o
+.PHONY : chatservice.cpp.o
+
+chatservice.i: chatservice.cpp.i
+.PHONY : chatservice.i
+
+# target to preprocess a source file
+chatservice.cpp.i:
+	cd /home/syjl/ChatServer/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.i
+.PHONY : chatservice.cpp.i
+
+chatservice.s: chatservice.cpp.s
+.PHONY : chatservice.s
+
+# target to generate assembly for a file
+chatservice.cpp.s:
+	cd /home/syjl/ChatServer/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.s
+.PHONY : chatservice.cpp.s
+
+db/db.o: db/db.cpp.o
+.PHONY : db/db.o
+
+# target to build an object file
+db/db.cpp.o:
+	cd /home/syjl/ChatServer/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/db/db.cpp.o
+.PHONY : db/db.cpp.o
+
+db/db.i: db/db.cpp.i
+.PHONY : db/db.i
+
+# target to preprocess a source file
+db/db.cpp.i:
+	cd /home/syjl/ChatServer/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/db/db.cpp.i
+.PHONY : db/db.cpp.i
+
+db/db.s: db/db.cpp.s
+.PHONY : db/db.s
+
+# target to generate assembly for a file
+db/db.cpp.s:
+	cd /home/syjl/ChatServer/build && $(MAKE) $(MAKESILENT) -f src/server/CMakeFiles/ChatServer.dir/build.make src/server/CMakeFiles/ChatServer.dir/db/db.cpp.s
+.PHONY : db/db.cpp.s
+
 main.o: main.cpp.o
 .PHONY : main.o
 
@@ -190,6 +238,12 @@ help:
 	@echo "... chatserver.o"
 	@echo "... chatserver.i"
 	@echo "... chatserver.s"
+	@echo "... chatservice.o"
+	@echo "... chatservice.i"
+	@echo "... chatservice.s"
+	@echo "... db/db.o"
+	@echo "... db/db.i"
+	@echo "... db/db.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

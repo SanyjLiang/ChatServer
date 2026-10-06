@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/c++
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/syjl/ChatServer/include -I/home/syjl/ChatServer/include/server
+CXX_INCLUDES = -I/home/syjl/ChatServer/include -I/home/syjl/ChatServer/include/server -I/home/syjl/ChatServer/include/server/db -I/home/syjl/ChatServer/thirdparty
 
 CXX_FLAGS = -g
 
