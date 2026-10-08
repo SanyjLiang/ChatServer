@@ -257,6 +257,8 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/local/include/boost/utility/enable_if.hpp \
  /usr/local/include/boost/core/enable_if.hpp \
  /usr/local/include/boost/type_traits/is_same.hpp \
+ /home/syjl/ChatServer/include/server/usermodel.hpp \
+ /home/syjl/ChatServer/include/server/user.hpp \
  /home/syjl/ChatServer/thirdparty/json.hpp /usr/include/c++/13/cassert \
  /usr/include/c++/13/ciso646 /usr/include/c++/13/numeric \
  /usr/include/c++/13/bits/stl_numeric.h \

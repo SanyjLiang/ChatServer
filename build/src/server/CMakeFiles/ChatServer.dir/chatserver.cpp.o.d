@@ -312,4 +312,6 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc /usr/include/c++/13/ostream \
  /usr/include/c++/13/bits/ostream.tcc \
  /usr/include/c++/13/bits/istream.tcc \
- /home/syjl/ChatServer/include/server/chatservice.hpp
+ /home/syjl/ChatServer/include/server/chatservice.hpp \
+ /home/syjl/ChatServer/include/server/usermodel.hpp \
+ /home/syjl/ChatServer/include/server/user.hpp
