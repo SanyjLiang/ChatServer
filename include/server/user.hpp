@@ -4,7 +4,7 @@
 #include <string>
 using namespace std;
 
-//User表的ORM类
+// User表的ORM类
 class User
 {
 public:
@@ -19,7 +19,7 @@ public:
     void setId(int id) { this->id = id; }
     void setName(string name) { this->name = name; }
     void setPwd(string pwd) { this->password = pwd; }
-    void setState(string state) { this->state = name; }
+    void setState(string state) { this->state = state; }
 
     int getId() { return this->id; }
     string getName() { return this->name; }
