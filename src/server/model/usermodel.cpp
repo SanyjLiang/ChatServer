@@ -60,8 +60,8 @@ bool UserModel::updateState(User user)
 {
     // 1.组装sql语句
     char sql[1024] = {0};
-    sprintf(sql, "update User set state='%s' where id =%d",user.getState().c_str(),user.getId());
-    //cout<<sql<<endl;
+    sprintf(sql, "update User set state='%s' where id =%d", user.getState().c_str(), user.getId());
+    // cout<<sql<<endl;
     MySQL mysql;
     if (mysql.connect())
     {
@@ -72,4 +72,18 @@ bool UserModel::updateState(User user)
     }
 
     return false;
+}
+
+// 重置用户的状态信息
+void UserModel::resetState()
+{
+    // 1.组装sql语句
+    char sql[1024] = {0};
+    sprintf(sql, "update User set state='offline' where state ='online' ");
+    // cout<<sql<<endl;
+    MySQL mysql;
+    if (mysql.connect())
+    {
+        mysql.update(sql);
+    }
 }

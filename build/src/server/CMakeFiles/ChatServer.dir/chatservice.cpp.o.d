@@ -257,8 +257,14 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/local/include/boost/utility/enable_if.hpp \
  /usr/local/include/boost/core/enable_if.hpp \
  /usr/local/include/boost/type_traits/is_same.hpp \
- /home/syjl/ChatServer/include/server/usermodel.hpp \
- /home/syjl/ChatServer/include/server/user.hpp \
+ /usr/include/c++/13/mutex /usr/include/c++/13/bits/chrono.h \
+ /usr/include/c++/13/ratio /usr/include/c++/13/cstdint \
+ /usr/include/c++/13/limits /usr/include/c++/13/ctime \
+ /usr/include/c++/13/bits/parse_numbers.h \
+ /usr/include/c++/13/bits/std_mutex.h \
+ /usr/include/c++/13/bits/unique_lock.h \
+ /home/syjl/ChatServer/include/server/model/usermodel.hpp \
+ /home/syjl/ChatServer/include/server/model/user.hpp \
  /home/syjl/ChatServer/thirdparty/json.hpp /usr/include/c++/13/cassert \
  /usr/include/c++/13/ciso646 /usr/include/c++/13/numeric \
  /usr/include/c++/13/bits/stl_numeric.h \
@@ -278,8 +284,7 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/include/x86_64-linux-gnu/bits/mathcalls.h \
  /usr/include/x86_64-linux-gnu/bits/mathcalls-narrow.h \
  /usr/include/x86_64-linux-gnu/bits/iscanonical.h \
- /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/limits \
- /usr/include/c++/13/tr1/gamma.tcc \
+ /usr/include/c++/13/bits/specfun.h /usr/include/c++/13/tr1/gamma.tcc \
  /usr/include/c++/13/tr1/special_function_util.h \
  /usr/include/c++/13/tr1/bessel_function.tcc \
  /usr/include/c++/13/tr1/beta_function.tcc \
@@ -299,9 +304,8 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/include/c++/13/bits/gslice.h \
  /usr/include/c++/13/bits/gslice_array.h \
  /usr/include/c++/13/bits/mask_array.h \
- /usr/include/c++/13/bits/indirect_array.h /usr/include/c++/13/cstdint \
- /usr/include/c++/13/istream /usr/include/c++/13/ios \
- /usr/include/c++/13/bits/basic_ios.h \
+ /usr/include/c++/13/bits/indirect_array.h /usr/include/c++/13/istream \
+ /usr/include/c++/13/ios /usr/include/c++/13/bits/basic_ios.h \
  /usr/include/c++/13/bits/locale_facets.h /usr/include/c++/13/cwctype \
  /usr/include/wctype.h /usr/include/x86_64-linux-gnu/bits/wctype-wchar.h \
  /usr/include/x86_64-linux-gnu/c++/13/bits/ctype_base.h \
@@ -310,5 +314,10 @@ src/server/CMakeFiles/ChatServer.dir/chatservice.cpp.o: \
  /usr/include/c++/13/bits/basic_ios.tcc /usr/include/c++/13/ostream \
  /usr/include/c++/13/bits/ostream.tcc \
  /usr/include/c++/13/bits/istream.tcc \
+ /home/syjl/ChatServer/include/server/model/offlinemessagemodel.hpp \
+ /home/syjl/ChatServer/include/server/model/friendmodel.hpp \
+ /home/syjl/ChatServer/include/server/model/groupmodel.hpp \
+ /home/syjl/ChatServer/include/server/model/group.hpp \
+ /home/syjl/ChatServer/include/server/model/groupuser.hpp \
  /home/syjl/ChatServer/include/public.hpp \
  /usr/include/muduo/base/Logging.h /usr/include/muduo/base/LogStream.h

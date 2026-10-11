@@ -313,5 +313,15 @@ src/server/CMakeFiles/ChatServer.dir/chatserver.cpp.o: \
  /usr/include/c++/13/bits/ostream.tcc \
  /usr/include/c++/13/bits/istream.tcc \
  /home/syjl/ChatServer/include/server/chatservice.hpp \
- /home/syjl/ChatServer/include/server/usermodel.hpp \
- /home/syjl/ChatServer/include/server/user.hpp
+ /usr/include/c++/13/mutex /usr/include/c++/13/bits/chrono.h \
+ /usr/include/c++/13/ratio /usr/include/c++/13/ctime \
+ /usr/include/c++/13/bits/parse_numbers.h \
+ /usr/include/c++/13/bits/std_mutex.h \
+ /usr/include/c++/13/bits/unique_lock.h \
+ /home/syjl/ChatServer/include/server/model/usermodel.hpp \
+ /home/syjl/ChatServer/include/server/model/user.hpp \
+ /home/syjl/ChatServer/include/server/model/offlinemessagemodel.hpp \
+ /home/syjl/ChatServer/include/server/model/friendmodel.hpp \
+ /home/syjl/ChatServer/include/server/model/groupmodel.hpp \
+ /home/syjl/ChatServer/include/server/model/group.hpp \
+ /home/syjl/ChatServer/include/server/model/groupuser.hpp
