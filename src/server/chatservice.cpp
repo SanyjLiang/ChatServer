@@ -65,7 +65,7 @@ void ChatService::login(const TcpConnectionPtr &conn, json &js, Timestamp time)
             json response;
             response["msgid"] = LOGIN_MSG_ACK;
             response["errno"] = 2;
-            response["errmsg"] = "该账号已经登录，请重新输入新账号";
+            response["errmsg"] = "this account is using,input another";
             conn->send(response.dump());
         }
         else
@@ -108,6 +108,36 @@ void ChatService::login(const TcpConnectionPtr &conn, json &js, Timestamp time)
                     vec2.push_back(js.dump());
                 }
                 response["friends"] = vec2;
+            }
+            
+            //查询用户的群组信息
+            vector<Group>groupuserVec=_groupModel.queryGroups(id);
+            if(!groupuserVec.empty())
+            {
+                //group:[{groupid:[xxx,xxx,xxx,xxx]}]
+                vector<string>groupV;
+                for(Group &group:groupuserVec)
+                {
+                    json grpjson;
+                    grpjson["id"]=group.getId();
+                    grpjson["groupname"]=group.getName();
+                    grpjson["groupdesc"]=group.getDesc();
+                    vector<string>userV;
+                    for(GroupUser &user:group.getUsers())
+                    {
+                        json js;
+                        js["js"]=user.getId();
+                        js["name"]=user.getName();
+                        js["state"]=user.getState();
+                        js["role"]=user.getRole();
+                        userV.push_back(js.dump());
+                    }
+                    grpjson["users"]=userV;
+                    groupV.push_back(grpjson.dump());
+                }
+
+                response["gourps"]=groupV;
+
             }
 
             conn->send(response.dump());
