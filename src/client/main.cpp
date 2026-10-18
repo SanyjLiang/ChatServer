@@ -271,7 +271,7 @@ void readTaskHandler(int clientfd)
         json js = json::parse(buffer);
         if (ONE_CHAT_MSG == js["msgid"].get<int>())
         {
-            cout << js["time"].get<string>() << " [" << js["id"] << "]" << js["name"].get<int>()
+            cout << js["time"].get<string>() << " [" << js["id"] << "]" << js["name"].get<string>()
                  << " said: " << js["msg"].get<string>() << endl;
             continue;
         }
@@ -373,7 +373,7 @@ void chat(int clientfd, string str)
     js["msgid"] = ONE_CHAT_MSG;
     js["id"] = g_currentUser.getId();
     js["name"] = g_currentUser.getName();
-    js["toid"] = friendid;
+    js["to"] = friendid;
     js["msg"] = message;
     js["time"] = getCurrentTime();
     string buffer = js.dump();
