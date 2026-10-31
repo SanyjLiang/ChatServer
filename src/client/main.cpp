@@ -80,7 +80,7 @@ int main(int argc, char **argv)
         cout << "2.register" << endl;
         cout << "3.quit" << endl;
         cout << "=======================" << endl;
-        cout << "choice";
+        cout << "choice:";
         int choice = 0;
         cin >> choice;
         cin.get(); // 读掉缓冲区残留的回车
@@ -184,8 +184,16 @@ int main(int argc, char **argv)
                             {
                                 json js = json::parse(str);
                                 // time + [id]+name+"said: "+xxx
-                                cout << js["time"] << " [" << js["id"] << "]" << js["name"]
-                                     << " said: " << js["msg"] << endl;
+                                if (ONE_CHAT_MSG == js["msgid"].get<int>())
+                                {
+                                    cout << js["time"].get<string>() << " [" << js["id"] << "]" << js["name"].get<string>()
+                                         << " said: " << js["msg"].get<string>() << endl;
+                                }
+                                else
+                                {
+                                    cout << "群消息[" << js["groupid"] << "]:" << js["time"].get<string>() << " [" << js["id"] << "]" << js["name"].get<string>()
+                                         << " said: " << js["msg"].get<string>() << endl;
+                                }
                             }
                         }
 
@@ -269,9 +277,17 @@ void readTaskHandler(int clientfd)
 
         // 接收ChatServer转发的数据，反序列化生成json数据对象
         json js = json::parse(buffer);
+        int msgtype = js["msgid"].get<int>();
         if (ONE_CHAT_MSG == js["msgid"].get<int>())
         {
             cout << js["time"].get<string>() << " [" << js["id"] << "]" << js["name"].get<string>()
+                 << " said: " << js["msg"].get<string>() << endl;
+            continue;
+        }
+
+        if (GROUP_CHAT_MSG == msgtype)
+        {
+            cout << "群消息[" << js["groupid"] << "]:" << js["time"].get<string>() << " [" << js["id"] << "]" << js["name"].get<string>()
                  << " said: " << js["msg"].get<string>() << endl;
             continue;
         }
@@ -403,11 +419,77 @@ void addfriend(int clientfd, string str)
 }
 
 //"creategroup" command handler
-void creategroup(int, string) {}
+void creategroup(int clientfd, string str)
+{
+    int idx = str.find(":");
+    if (-1 == idx)
+    {
+        cerr << "creategroup command invalid!" << endl;
+        return;
+    }
+
+    string groupname = str.substr(0, idx);
+    string groupdesc = str.substr(idx + 1, str.size() - 1);
+
+    json js;
+    js["msgid"] = CREATE_GROUP_MSG;
+    js["id"] = g_currentUser.getId();
+    js["groupname"] = groupname;
+    js["groupdesc"] = groupdesc;
+
+    string buffer = js.dump();
+
+    int len = send(clientfd, buffer.c_str(), strlen(buffer.c_str()) + 1, 0);
+    if (-1 == len)
+    {
+        cerr << "send creategroup msg error -> " << buffer << endl;
+    }
+}
 //"addgroup" command handler
-void addgroup(int, string) {}
+void addgroup(int clientfd, string str)
+{
+    int groupid = atoi(str.c_str());
+    json js;
+    js["msgid"] = ADD_GROUP_MSG;
+    js["id"] = g_currentUser.getId();
+    js["groupid"] = groupid;
+    string buffer = js.dump();
+
+    int len = send(clientfd, buffer.c_str(), strlen(buffer.c_str()) + 1, 0);
+    if (-1 == len)
+    {
+        cerr << "send addgroup msg error -> " << buffer << endl;
+    }
+}
 //"groupchat" command handler
-void groupchat(int, string) {}
+void groupchat(int clientfd, string str)
+{
+    int idx = str.find(":");
+    if (-1 == idx)
+    {
+        cerr << "groupchat command invalid!" << endl;
+        return;
+    }
+
+    int groupid = atoi(str.substr(0, idx).c_str());
+    string message = str.substr(idx + 1, str.size() - 1);
+
+    json js;
+    js["msgid"] = GROUP_CHAT_MSG;
+    js["id"] = g_currentUser.getId();
+    js["name"] = g_currentUser.getName();
+    js["groupid"] = groupid;
+    js["msg"] = message;
+    js["time"] = getCurrentTime();
+
+    string buffer = js.dump();
+
+    int len = send(clientfd, buffer.c_str(), strlen(buffer.c_str()) + 1, 0);
+    if (-1 == len)
+    {
+        cerr << "send creategroup msg error -> " << buffer << endl;
+    }
+}
 //"loginout" command handler
 void loginout(int, string) {}
 
